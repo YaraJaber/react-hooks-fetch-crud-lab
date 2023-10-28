@@ -27,13 +27,13 @@ test("displays question prompts after fetching", async () => {
 test("creates a new question when the form is submitted", async () => {
   render(<App />);
 
-  // wait for first render of list (otherwise we get a React state warning)
+ 
   await screen.findByText(/lorem testum 1/g);
 
-  // click form page
+  
   fireEvent.click(screen.queryByText("New Question"));
 
-  // fill out form
+  
   fireEvent.change(screen.queryByLabelText(/Prompt/), {
     target: { value: "Test Prompt" },
   });
@@ -47,10 +47,10 @@ test("creates a new question when the form is submitted", async () => {
     target: { value: "1" },
   });
 
-  // submit form
+
   fireEvent.submit(screen.queryByText(/Add Question/));
 
-  // view questions
+
   fireEvent.click(screen.queryByText(/View Questions/));
 
   expect(await screen.findByText(/Test Prompt/g)).toBeInTheDocument();
